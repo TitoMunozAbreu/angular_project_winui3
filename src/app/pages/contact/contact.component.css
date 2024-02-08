@@ -1,0 +1,10 @@
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+    color: red;
+}
+span {
+    color: red;
+}
+h1 {
+    color: #f5c31d;
+}

@@ -1,0 +1,103 @@
+<div class="container-fluid py-4">
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3 ">
+        <h1 class="display-5 fw-bold">Contacto</h1>  
+        <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form (ngSubmit)="submit()" #registerForm="ngForm">
+            <!-- alumnoData -->
+            <div
+                id="formulario-data"
+                ngModelGroup="formularioData"
+                #formularioData = "ngModelGroup"
+                >
+                    <!-- nombre -->
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input 
+                            type="text"          
+                            class="form-control"
+                            ngModel 
+                            #nombre = "ngModel"
+                            name="nombre"
+                            required
+                        >
+                    </div>
+                    <!-- msg validator -->
+                    <span *ngIf="!nombre.valid && nombre.touched" class="help-block"> ¡Ingresar un nombre valido!</span>                     
+                    <!-- apellido -->
+                    <div class="form-group">
+                        <label for="apellido">Apellido</label>
+                        <input 
+                            type="text"          
+                            class="form-control"
+                            ngModel 
+                            #apellido = "ngModel"
+                            name="apellido"     
+                            required
+                        >
+                    </div>
+                    <!-- msg validator -->
+                    <span *ngIf="!apellido.valid && apellido.touched" class="help-block">¡Ingresar un apellido valido!</span>                                                   
+                    <!-- email -->
+                    <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email"          
+                        class="form-control"
+                        ngModel 
+                        #email = "ngModel"
+                        name="email"
+                        email
+                        required
+                        >
+                    </div>
+                    <!-- msg validator -->
+                    <span *ngIf="!email.valid && email.touched" class="help-block">¡Ingresar un email valido!</span>         
+                </div>
+            <!-- msg UserData validator -->
+            <span *ngIf="!formularioData.valid && formularioData.touched" class="help-block">¡Formulario invalido!</span>
+            <div class="form-group mb-3">
+                <label for="comentario" class="form-label">Comentarios</label>
+                <textarea 
+                    class="form-control" 
+                    id="comentario" 
+                    rows="3"
+                    ngModel
+                    #comentario = "ngModel"
+                    name="comentario"
+                    ></textarea>
+              </div>
+            <!-- button -->
+            <button 
+                [disabled]="!registerForm.valid"
+                type ="submit" 
+                class="btn btn-primary my-2"
+                data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">Registrar</button>
+            </form>
+        </div>
+        </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario Enviado</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Nombre: {{ contacto.nombre }}</p> 
+          <p>Apellido: {{ contacto.apellido }}</p>
+          <p>Email: {{ contacto.email }}</p>
+          <p>Comentarios: {{ contacto.comentario }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
